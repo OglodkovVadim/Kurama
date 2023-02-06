@@ -75,12 +75,30 @@ QToolButton:hover {
 QToolButton:pressed {
 	background-color: rgb(46, 47, 48);
 	color: #eee;
+}
+
+QToolButton#toolButton_2 {
+	background-color:none;
+	min-width:15px;
+	max-width:15px;
+	min-height:15px;
+	max-height:15px;
+	image: url(:/image/arrowRight.png);
+	border:none;
+}	
+
+QToolButton#toolButton_2:hover {
+	image: url(:/image/arrowRightHover.png);
+} 
+
+QToolButton#toolButton_2:pressed {
+	image: url(:/image/arrowRight.png);
 }</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>50</x>
      <y>10</y>
      <width>102</width>
      <height>42</height>
@@ -93,7 +111,7 @@ QToolButton:pressed {
   <widget class="QToolButton" name="toolButton">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>160</x>
      <y>12</y>
      <width>37</width>
      <height>37</height>
@@ -106,14 +124,14 @@ QToolButton:pressed {
   <widget class="QToolButton" name="toolButton_2">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>12</y>
-     <width>37</width>
-     <height>37</height>
+     <x>25</x>
+     <y>25</y>
+     <width>15</width>
+     <height>15</height>
     </rect>
    </property>
    <property name="text">
-    <string>...</string>
+    <string/>
    </property>
   </widget>
   <widget class="QWidget" name="widget" native="true">

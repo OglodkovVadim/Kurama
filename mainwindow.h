@@ -24,6 +24,7 @@ public:
 public slots:
     void getSignal(const Explorer *, const bool);
     void addFileSlot(const Explorer*);
+    void removeFileSlot(const Explorer*);
 
 private slots:
     void on_toolButton_clicked();

@@ -39,10 +39,10 @@ Explorer* MainWindow::findPreviousExplorer(const Explorer* exp)
 
 void MainWindow::addFileSlot(const Explorer* exp)
 {
-    findExplorer(exp)->setGeometry(exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), exp->geometry().height() + exp->getQLabel()->height() * 2);
-    ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + exp->getQLabel()->height() * 2);
+    findExplorer(exp)->setGeometry(exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), exp->geometry().height() + exp->getQLabel()->height() * 1.5);
+    ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + exp->getQLabel()->height() * 1.5);
     while (findNextExplorer(exp) != nullptr) {
-        findNextExplorer(exp)->changeHeight();
+        findNextExplorer(exp)->changeNextPosAdd();
         exp = findNextExplorer(exp);
     }
 }
@@ -50,29 +50,20 @@ void MainWindow::addFileSlot(const Explorer* exp)
 void MainWindow::getSignal(const Explorer* exp, const bool checkHide)
 {
     if (checkHide) {
-        Explorer::animationWidget(*findExplorer(exp), exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), exp->getQLabel()->height() * 1.25, QEasingCurve::Linear, 200);
+        ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() - exp->getWidget()->height() * 0.75);
+        findExplorer(exp)->changeHeightEscape();
+        while (findNextExplorer(exp) != nullptr) {
+            findNextExplorer(exp)->setGeometry(findNextExplorer(exp)->geometry().x(), exp->geometry().y() + exp->geometry().height() * 1.25, findNextExplorer(exp)->geometry().width(), findNextExplorer(exp)->geometry().height());
+            exp = findNextExplorer(exp);
+        }
     }
     else {
-        Explorer::animationWidget(*findExplorer(exp), exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), height, QEasingCurve::Linear, 200);
-    }
-
-    if (findNextExplorer(exp) == nullptr) {
-        if (checkHide)
-            Explorer::animationWidget(*findExplorer(exp), exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), exp->getQLabel()->height() * 1.25, QEasingCurve::Linear, 200);
-        else
-            Explorer::animationWidget(*findExplorer(exp), exp->geometry().x(), exp->geometry().y(), exp->geometry().width(), height, QEasingCurve::Linear, 200);
-    }
-
-    while (findNextExplorer(exp) != nullptr) {
-        if (checkHide) {
-            Explorer::animationWidget(*findNextExplorer(exp), exp->geometry().x(), exp->geometry().y() + exp->getQLabel()->height() * 1.25, exp->geometry().width(), height, QEasingCurve::Linear, 200);
+        findExplorer(exp)->changeHeightShow();
+        ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + exp->getWidget()->height());
+        while (findNextExplorer(exp) != nullptr) {
+            findNextExplorer(exp)->setGeometry(findNextExplorer(exp)->geometry().x(), exp->geometry().y() + exp->geometry().height(), findNextExplorer(exp)->geometry().width(), findNextExplorer(exp)->geometry().height());
             exp = findNextExplorer(exp);
         }
-        else {
-            Explorer::animationWidget(*findNextExplorer(exp), exp->geometry().x(), exp->geometry().y() + height, exp->geometry().width(), height, QEasingCurve::Linear, 200);
-            exp = findNextExplorer(exp);
-        }
-
     }
 }
 
@@ -80,6 +71,18 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+void MainWindow::removeFileSlot(const Explorer* exp)
+{
+    while (findNextExplorer(exp) != nullptr) {
+        findNextExplorer(exp)->changeNextPosRemove();
+        exp = findNextExplorer(exp);
+    }
+    ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() - exp->getQLabel()->height() * 2);
+}
+
+
 
 
 void MainWindow::on_toolButton_clicked()
@@ -98,4 +101,6 @@ void MainWindow::on_toolButton_clicked()
 
     connect(arrExplorer.back(), SIGNAL(escapeChange(const Explorer*, bool)), this, SLOT(getSignal(const Explorer*, bool)));
     connect(arrExplorer.back(), SIGNAL(addFile(const Explorer*)), this, SLOT(addFileSlot(const Explorer*)));
+    connect(arrExplorer.back(), SIGNAL(removeFile(const Explorer*)), this, SLOT(removeFileSlot(const Explorer*)));
+
 }

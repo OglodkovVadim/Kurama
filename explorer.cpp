@@ -44,13 +44,21 @@ void Explorer::on_toolButton_clicked()
     ui->verticalLayout->insertWidget(0, arrWidButt.back());
 
 // changing scroll area height
-    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height()+ui->label->height() * 1.5));
+
+    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height()+ui->label->height() * 1.25));
+
+    if (checkHide) {
+        checkHide = false;
+        emit escapeChange(this, checkHide);
+        ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowDown.png);} QToolButton#toolButton_2:hover {image: url(:/image/arrowDownHover.png);} QToolButton#toolButton_2:pressed {image: url(:/image/arrowDown.png);}");
+    }
 
 // connecting to mainwindow
     connect(arrTb.back(), SIGNAL(clicked()),
             this, SLOT(remove_File()));
-    qDebug() << "adding...";
+
     emit addFile(this);
+
 }
 
 QLabel* Explorer::getQLabel() const
@@ -58,14 +66,29 @@ QLabel* Explorer::getQLabel() const
     return ui->label;
 }
 
-void Explorer::changeHeight()
+void Explorer::changeNextPosAdd()
 {
-    this->setGeometry(this->geometry().x(), this->geometry().y() + ui->label->height() * 2, this->geometry().width(), this->geometry().height());
+    this->setGeometry(this->geometry().x(), this->geometry().y() + ui->label->height() * 1.5, this->geometry().width(), this->geometry().height());
+}
+
+void Explorer::changeNextPosRemove()
+{
+    this->setGeometry(this->geometry().x(), this->geometry().y() - ui->label->height() * 2, this->geometry().width(), this->geometry().height());
 }
 
 void Explorer::changeHeightWidget()
 {
     this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->widget->height()+ui->label->height() * 1.25);
+}
+
+void Explorer::changeHeightEscape()
+{
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->label->height() * 1.25);
+}
+
+void Explorer::changeHeightShow()
+{
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->widget->height() * 1.25);
 }
 
 QWidget* Explorer::getWidget() const { return ui->widget; }
@@ -74,10 +97,11 @@ bool Explorer::getStatus() const { return checkHide; }
 
 void Explorer::remove_File()
 {
+    int index = 0;
     qDebug() << "remove";
     for (int i = 0; i < arrLayout.size(); i++)
         if (qobject_cast<QWidget*>(sender()->parent()) == arrWidButt[i]) {
-//            animationWidget(*arrWidButt[i], arrWidButt[i]->x(), arrWidButt[i]->y(), 0, arrWidButt[i]->height(), QEasingCurve::Linear, 200);
+            index = i;
             arrWidButt[i]->hide();
             arrPb[i]->hide();
             arrTb[i]->hide();
@@ -88,16 +112,23 @@ void Explorer::remove_File()
         }
 
     ui->verticalLayout->addStretch();
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(), ui->widget->height() - arrWidButt[index]->height());
+    emit removeFile(this);
 }
 
 void Explorer::on_toolButton_2_clicked()
 {
+    if (checkHide) {
+        ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowDown.png);} QToolButton#toolButton_2:hover {image: url(:/image/arrowDownHover.png);} QToolButton#toolButton_2:pressed {image: url(:/image/arrowDown.png);}");
+        checkHide = false;
+    }
+    else {
+        checkHide = true;
+        ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowRight.png);} QToolButton#toolButton_2:hover {image: url(:/image/arrowRightHover.png);} QToolButton#toolButton_2:pressed {image: url(:/image/arrowRight.png);}");
+    }
+
     emit escapeChange(this, checkHide);
 
-    if (checkHide)
-        checkHide = false;
-    else
-        checkHide = true;
 }
 
 void Explorer::setStandartGeometry()
@@ -105,7 +136,4 @@ void Explorer::setStandartGeometry()
     this->setGeometry(0, 0, width, 60);
 }
 
-// 1) при удалении файлов сдвигать оставшиеся
-// 2) при развертывании/свертывании подкорректировать сдвижение элементов
-// 3) изменить кнопку развертывания/свертывания на стрелочку
 // 4) добавить кнопку добавлениня каталога в каталог

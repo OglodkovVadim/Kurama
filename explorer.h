@@ -6,6 +6,8 @@
 #include <QLayout>
 #include <QPropertyAnimation>
 #include <QLabel>
+#include <QGraphicsScene>
+#include <QGraphicsProxyWidget>
 
 
 namespace Ui {
@@ -26,11 +28,17 @@ public:
 
     bool getStatus() const;
 
-    void changeHeight();
+    void changeNextPosAdd();
+
+    void changeNextPosRemove();
 
     void setStandartGeometry();
 
     void changeHeightWidget();
+
+    void changeHeightEscape();
+
+    void changeHeightShow();
 
     QWidget* getWidget() const;
 
@@ -42,6 +50,7 @@ private slots:
 signals:
     void escapeChange(const Explorer* exp, const bool);
     void addFile(const Explorer*);
+    void removeFile(const Explorer*);
 
 private:
     Ui::Explorer *ui;
