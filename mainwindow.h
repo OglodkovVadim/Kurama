@@ -33,7 +33,6 @@ private:
     Ui::MainWindow *ui;
 
     QVector<Explorer*> arrExplorer;
-    QPushButton arr[30];
     QWidget* contents;
     QVBoxLayout* contentsLayout;
 
