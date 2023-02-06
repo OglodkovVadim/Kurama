@@ -53,7 +53,7 @@ private slots:
 signals:
     void escapeChange(const Explorer* exp, const bool);
     void addFile(const Explorer*);
-    void removeFile(const Explorer*);
+    void removeFile(const Explorer*, const QWidget*);
     void clickedFile(const QPushButton*);
 
 private:
