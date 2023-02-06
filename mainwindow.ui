@@ -70,8 +70,7 @@ QWidget#widget {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">
-</string>
+      <string notr="true"/>
      </property>
      <property name="widgetResizable">
       <bool>true</bool>
@@ -91,7 +90,7 @@ QWidget#widget {
      <property name="geometry">
       <rect>
        <x>330</x>
-       <y>4</y>
+       <y>10</y>
        <width>37</width>
        <height>37</height>
       </rect>
@@ -114,8 +113,146 @@ QWidget#widget {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(46, 47, 48);</string>
+     <string notr="true">QWidget#widget_2 {
+	border-left: 1px solid #eee;
+}
+QWidget#widget_3 {
+	background-color: rgb(33, 34, 35);
+	border-radius:15px;
+}</string>
     </property>
+    <widget class="QWidget" name="widget_3" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>75</y>
+       <width>781</width>
+       <height>620</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>750</width>
+       <height>650</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTabBar::tab {
+    min-width:100px; 
+    min-height:40px;
+	border-radius: 7px;
+	background-color: rgb(46, 47, 48);
+	color: #eee;
+	margin-left: 5px;
+	border: 1px solid #eee;
+	margin-bottom:5px;
+	font: 14px;
+	font-weight: bold;
+	padding-left: 2px;
+}
+
+QWidget {
+	background-color: rgb(33, 34, 35);
+	border:none;
+}
+
+QTabBar {
+	margin-bottom:5px;
+}
+
+QTabBar::tab::hover {
+    color: rgb(46, 47, 48);
+	background-color: rgb(238, 238, 238);
+}
+
+QTabBar::tab::selected {
+    color: rgb(46, 47, 48);
+	background-color: rgb(238, 238, 238);
+}
+
+QTabWidget::pane &gt; QWidget {
+	background-color: rgb(46, 47, 48);
+}
+
+QTabWidget::pane {
+	background-color: rgb(46, 47, 48);
+}
+
+QTabBar::close-button {
+	image: url(:/image/close2);
+}
+
+QTabBar::close-button::hover {
+	image: url(:/image/closeRedHover);
+}</string>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="movable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <widget class="QPlainTextEdit" name="plainTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>751</width>
+         <height>601</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 20px bold;
+color: #eee;</string>
+       </property>
+       <property name="plainText">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QColumnView" name="columnView">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>310</y>
+         <width>256</width>
+         <height>192</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

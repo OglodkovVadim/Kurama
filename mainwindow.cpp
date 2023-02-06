@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->scrollArea->setWidgetResizable(false);
     ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), 0);
+    ui->tabWidget->hide();
+    ui->tabWidget->removeTab(0);
 }
 
 Explorer* MainWindow::findExplorer(const Explorer* exp)
@@ -36,6 +38,8 @@ Explorer* MainWindow::findPreviousExplorer(const Explorer* exp)
 
     return nullptr;
 }
+
+
 
 void MainWindow::addFileSlot(const Explorer* exp)
 {
@@ -102,5 +106,33 @@ void MainWindow::on_toolButton_clicked()
     connect(arrExplorer.back(), SIGNAL(escapeChange(const Explorer*, bool)), this, SLOT(getSignal(const Explorer*, bool)));
     connect(arrExplorer.back(), SIGNAL(addFile(const Explorer*)), this, SLOT(addFileSlot(const Explorer*)));
     connect(arrExplorer.back(), SIGNAL(removeFile(const Explorer*)), this, SLOT(removeFileSlot(const Explorer*)));
+    connect(arrExplorer.back(), SIGNAL(clickedFile(const QPushButton*)), this, SLOT(clickedPushButton(const QPushButton*)));
+}
+
+bool MainWindow::findSameText(const QPushButton* pb)
+{
+    for (int i = 0; i < ui->tabWidget->count(); i++)
+        if (ui->tabWidget->tabText(i) == pb->text())
+            return false;
+
+    return true;
+}
+
+void MainWindow::clickedPushButton(const QPushButton* pb)
+{
+    ui->tabWidget->show();
+    if (findSameText(pb))
+        ui->tabWidget->addTab(new QWidget(), pb->text());
+    else {
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","An error has occured !");
+        messageBox.setFixedSize(500,200);
+    }
 
 }
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    ui->tabWidget->removeTab(index);
+}
+

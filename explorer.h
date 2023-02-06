@@ -42,15 +42,19 @@ public:
 
     QWidget* getWidget() const;
 
+    QPushButton* getPushButton() const;
+
 private slots:
     void on_toolButton_clicked();
     void remove_File();
     void on_toolButton_2_clicked();
+    void clicked_File();
 
 signals:
     void escapeChange(const Explorer* exp, const bool);
     void addFile(const Explorer*);
     void removeFile(const Explorer*);
+    void clickedFile(const QPushButton*);
 
 private:
     Ui::Explorer *ui;

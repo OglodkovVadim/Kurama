@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "explorer.h"
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,13 +22,18 @@ public:
     Explorer* findNextExplorer(const Explorer*);
     Explorer* findPreviousExplorer(const Explorer*);
 
+    bool findSameText(const QPushButton *);
+
 public slots:
     void getSignal(const Explorer *, const bool);
     void addFileSlot(const Explorer*);
     void removeFileSlot(const Explorer*);
+    void clickedPushButton(const QPushButton*);
 
 private slots:
     void on_toolButton_clicked();
+
+    void on_tabWidget_tabCloseRequested(int index);
 
 private:
     Ui::MainWindow *ui;

@@ -57,8 +57,16 @@ void Explorer::on_toolButton_clicked()
     connect(arrTb.back(), SIGNAL(clicked()),
             this, SLOT(remove_File()));
 
+    connect(arrPb.back(), SIGNAL(clicked()),
+            this, SLOT(clicked_File()));
+
     emit addFile(this);
 
+}
+
+void Explorer::clicked_File()
+{
+    emit clickedFile(qobject_cast<QPushButton*>(sender()));
 }
 
 QLabel* Explorer::getQLabel() const
@@ -135,6 +143,7 @@ void Explorer::setStandartGeometry()
 {
     this->setGeometry(0, 0, width, 60);
 }
+
 
 // 1) подредактировать удаление файлов
 // 2) добавить кнопку добавлениня каталога в каталог
