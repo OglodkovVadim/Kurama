@@ -44,23 +44,28 @@ public:
 
     QPushButton* getPushButton() const;
 
+    int getCountFiles() const;
+
 private slots:
     void on_toolButton_clicked();
     void remove_File();
     void on_toolButton_2_clicked();
     void clicked_File();
 
+    void on_addFolder_clicked();
+
 signals:
     void escapeChange(const Explorer* exp, const bool);
     void addFile(const Explorer*);
-    void removeFile(const Explorer*, const QWidget*);
+    void removeFile(const Explorer*);
     void clickedFile(const QPushButton*);
 
 private:
     Ui::Explorer *ui;
 
     QVector<QPushButton*> arrPb;
-    QVector<QToolButton*> arrTb;
+    QVector<QToolButton*> arrTbRemoveFile;
+    QVector<Explorer*> arrLocalExplorer;
     QVector<QWidget*> arrWidButt;
     QVector<QHBoxLayout*> arrLayout;
 

@@ -4,12 +4,11 @@
         <file>arrowRight.png</file>
         <file>arrowRightHover.png</file>
         <file>arrowDownHover.png</file>
-        <file>close</file>
-        <file>closeHover</file>
-        <file>closeRed</file>
         <file>closeRedHover</file>
-        <file>closeBold</file>
-        <file>close2</file>
-        <file>closeCircle</file>
+        <file>closeRed</file>
+        <file>addFile</file>
+        <file>addFileHover</file>
+        <file>addFolder</file>
+        <file>addFolderHover</file>
     </qresource>
 </RCC>

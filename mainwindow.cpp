@@ -41,9 +41,8 @@ Explorer* MainWindow::findPreviousExplorer(const Explorer* exp)
 
 void MainWindow::addFileSlot(const Explorer* exp)
 {
-    //findExplorer(exp)->changeHeightWidget();
     ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(),
-                                              ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + exp->getQLabel()->height() * 1.5);
+                                              ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + 60);
     while (findNextExplorer(exp) != nullptr) {
         findNextExplorer(exp)->setGeometry(findNextExplorer(exp)->geometry().x(), exp->geometry().y() + exp->geometry().height(),
                                            findNextExplorer(exp)->geometry().width(), findNextExplorer(exp)->geometry().height());
@@ -81,17 +80,15 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::removeFileSlot(const Explorer* exp, const QWidget* wid)
+void MainWindow::removeFileSlot(const Explorer* exp)
 {
     while (findNextExplorer(exp) != nullptr) {
         findNextExplorer(exp)->setGeometry(findNextExplorer(exp)->geometry().x(), exp->geometry().y() + exp->geometry().height(),
                                            findNextExplorer(exp)->geometry().width(), findNextExplorer(exp)->geometry().height());
-        /*setGeometry(findNextExplorer(exp)->geometry().x(), findNextExplorer(exp)->geometry().y() - wid->height() * 1.5,
-         *  findNextExplorer(exp)->geometry().width(), findNextExplorer(exp)->geometry().height());*/
         exp = findNextExplorer(exp);
     }
     ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(),
-                                              ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() - wid->height());
+                                              ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() - exp->getQLabel()->height() * 1.5);
 }
 
 void MainWindow::on_toolButton_clicked()
@@ -102,18 +99,18 @@ void MainWindow::on_toolButton_clicked()
     if (arrExplorer.size() > 1) {
         arrExplorer.back()->setStandartGeometry();
         arrExplorer.back()->setGeometry(arrExplorer.back()->geometry().x(),
-                                        findPreviousExplorer(arrExplorer.back())->geometry().y() + findPreviousExplorer(arrExplorer.back())->geometry().height() * 1.25,
+                                        findPreviousExplorer(arrExplorer.back())->geometry().y() + findPreviousExplorer(arrExplorer.back())->geometry().height(),
                                         arrExplorer.back()->geometry().width(), arrExplorer.back()->geometry().height());
     }
     else
         arrExplorer.back()->setStandartGeometry();
 
     ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(),
-                                              ui->scrollAreaWidgetContents->height() + arrExplorer.back()->geometry().height() * 1.25);
+                                              ui->scrollAreaWidgetContents->height() + arrExplorer.back()->geometry().height());
 
     connect(arrExplorer.back(), SIGNAL(escapeChange(const Explorer*, bool)), this, SLOT(getSignal(const Explorer*, bool)));
     connect(arrExplorer.back(), SIGNAL(addFile(const Explorer*)), this, SLOT(addFileSlot(const Explorer*)));
-    connect(arrExplorer.back(), SIGNAL(removeFile(const Explorer*, const QWidget*)), this, SLOT(removeFileSlot(const Explorer*, const QWidget*)));
+    connect(arrExplorer.back(), SIGNAL(removeFile(const Explorer*)), this, SLOT(removeFileSlot(const Explorer*)));
     connect(arrExplorer.back(), SIGNAL(clickedFile(const QPushButton*)), this, SLOT(clickedPushButton(const QPushButton*)));
 }
 

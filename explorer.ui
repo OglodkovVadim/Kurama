@@ -34,7 +34,7 @@ QLabel {
 
 QPushButton {
 	border: 1px solid #eee;
-	min-width:35px;
+	min-width:100px;
 	max-width:100px;
 	min-height:35px;
 	max-height:40px;
@@ -56,9 +56,9 @@ QPushButton:hover {
 
 QToolButton {
 	border: 1px solid #eee;
-	min-width:35px;
+	min-width:30px;
 	max-width:35px;
-	min-height:35px;
+	min-height:25px;
 	max-height:35px;
 	border-radius: 10px;
 	qproperty-alignment: AlignCenter;	
@@ -105,20 +105,37 @@ QToolButton#toolButton_2:pressed {
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>Folder</string>
    </property>
   </widget>
   <widget class="QToolButton" name="toolButton">
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>12</y>
-     <width>37</width>
-     <height>37</height>
+     <y>18</y>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/addFile);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/addFileHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/addFile);
+}</string>
+   </property>
    <property name="text">
-    <string>+</string>
+    <string/>
    </property>
   </widget>
   <widget class="QToolButton" name="toolButton_2">
@@ -143,6 +160,9 @@ QToolButton#toolButton_2:pressed {
      <height>181</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -155,10 +175,41 @@ QToolButton#toolButton_2:pressed {
     <layout class="QVBoxLayout" name="verticalLayout"/>
    </widget>
   </widget>
+  <widget class="QToolButton" name="addFolder">
+   <property name="geometry">
+    <rect>
+     <x>193</x>
+     <y>18</y>
+     <width>35</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/addFolder);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/addFolderHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/addFolder);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>toolButton</zorder>
   <zorder>label</zorder>
   <zorder>toolButton_2</zorder>
   <zorder>widget</zorder>
+  <zorder>addFolder</zorder>
  </widget>
  <resources/>
  <connections/>

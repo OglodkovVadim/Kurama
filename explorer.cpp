@@ -16,13 +16,11 @@ Explorer::Explorer(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    x = 40;
-    y = 55;
     width = 260;
     height = 60;
     checkHide = true;
 
-    ui->widget->setGeometry(x, y, width, height);
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), width, height);
     ui->widget->setLayout(ui->verticalLayout);
     ui->toolButton_2->setEnabled(false);
 }
@@ -35,30 +33,33 @@ Explorer::~Explorer()
 void Explorer::on_toolButton_clicked()
 {
     ui->toolButton_2->setEnabled(true);
+
 // adding new file
     arrWidButt.append(new QWidget());
-    arrPb.append(new QPushButton("New"));
-    arrTb.append(new QToolButton());
-    arrTb.back()->setText("-");
+    arrPb.append(new QPushButton("File.txt"));
+    arrTbRemoveFile.append(new QToolButton());
+    arrTbRemoveFile.back()->setStyleSheet("QToolButton { border:none; background-color:none; image: url(:/image/closeRed); max-width: 25px; max-height: 25px; }"
+                                          " QToolButton:hover { image: url(:/image/closeRedHover); }"
+                                          "QToolButton:pressed { image: url(:/image/closeRed); }");
     arrLayout.append(new QHBoxLayout(arrWidButt.back()));
     arrLayout.back()->addWidget(arrPb.back());
-    arrLayout.back()->addWidget(arrTb.back());
+    arrLayout.back()->addWidget(arrTbRemoveFile.back());
+    arrLayout.back()->addStretch();
     ui->verticalLayout->insertWidget(0, arrWidButt.back());
 
 // changing widget height
-    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height() + ui->label->height() * 1.5));
-
-    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() + ui->label->height() * 2);
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(), ui->widget->height() + 60);
 
     if (checkHide) {
         checkHide = false;
         emit escapeChange(this, checkHide);
-        this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->widget->height() - ui->label->height() * 1.5 + ui->label->height() * 2);
         ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowDown.png);} QToolButton#toolButton_2:hover {image: url(:/image/arrowDownHover.png);} QToolButton#toolButton_2:pressed {image: url(:/image/arrowDown.png);}");
     }
+    else
+        this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() + 60);
 
 // connecting to mainwindow
-    connect(arrTb.back(), SIGNAL(clicked()),
+    connect(arrTbRemoveFile.back(), SIGNAL(clicked()),
             this, SLOT(remove_File()));
 
     connect(arrPb.back(), SIGNAL(clicked()),
@@ -94,12 +95,12 @@ void Explorer::changeHeightWidget()
 
 void Explorer::changeHeightEscape()
 {
-    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->label->height() * 1.5);
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->widget->y());
 }
 
 void Explorer::changeHeightShow()
 {
-    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), ui->widget->height() * 1.5);
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() + ui->widget->height());
 }
 
 QWidget* Explorer::getWidget() const { return ui->widget; }
@@ -108,31 +109,27 @@ bool Explorer::getStatus() const { return checkHide; }
 
 void Explorer::remove_File()
 {
-//    qDebug() << "(explorer): " << this->geometry().height();
-    int index = 0;
     for (int i = 0; i < arrLayout.size(); i++)
         if (qobject_cast<QWidget*>(sender()->parent()) == arrWidButt[i]) {
-            index = i;
             arrWidButt[i]->hide();
             arrPb[i]->hide();
-            arrTb[i]->hide();
+            arrTbRemoveFile[i]->hide();
             arrLayout.remove(i);
             arrPb.remove(i);
-            arrTb.remove(i);
+            arrTbRemoveFile.remove(i);
             arrWidButt.remove(i);
         }
-//    qDebug() << "(explorer): " << this->geometry().height();
+
     ui->verticalLayout->addStretch();
-    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height() - ui->label->height() * 1.5));
-    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() - ui->label->height() * 2);
+    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height() - 60));
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() - 60);
 
     if (arrWidButt.size() == 0) {
         ui->toolButton_2->setEnabled(false);
-//        this->setStandartGeometry();
         checkHide = true;
         ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowRight.png);} QToolButton#toolButton_2:hover {image: url(:/image/arrowRightHover.png);} QToolButton#toolButton_2:pressed {image: url(:/image/arrowRight.png);}");
     }
-    emit removeFile(this, arrWidButt[index]);
+    emit removeFile(this);
 }
 
 void Explorer::on_toolButton_2_clicked()
@@ -152,9 +149,34 @@ void Explorer::on_toolButton_2_clicked()
 
 void Explorer::setStandartGeometry()
 {
-    this->setGeometry(0, 0, width, 60);
+    this->setGeometry(0, 0, width, ui->widget->y());
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(),0);
 }
 
+int Explorer::getCountFiles() const
+{
+    return arrWidButt.size();
+}
 
-// 1) подредактировать удаление файлов
 // 2) добавить кнопку добавлениня каталога в каталог
+
+void Explorer::on_addFolder_clicked()
+{
+    arrLocalExplorer.append(new Explorer());
+    ui->verticalLayout->insertWidget(0, arrLocalExplorer.back());
+
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(), ui->widget->height() + 60);
+
+    if (checkHide) {
+        checkHide = false;
+        emit escapeChange(this, checkHide);
+        ui->toolButton_2->setStyleSheet("QToolButton#toolButton_2 {image: url(:/image/arrowDown.png);}"
+                                        " QToolButton#toolButton_2:hover {image: url(:/image/arrowDownHover.png);}"
+                                        " QToolButton#toolButton_2:pressed {image: url(:/image/arrowDown.png);}");
+    }
+    else
+        this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() + 60);
+
+    emit addFile(this);
+}
+

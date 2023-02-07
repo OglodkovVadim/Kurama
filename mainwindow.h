@@ -27,7 +27,7 @@ public:
 public slots:
     void getSignal(const Explorer *, const bool);
     void addFileSlot(const Explorer*);
-    void removeFileSlot(const Explorer*, const QWidget*);
+    void removeFileSlot(const Explorer*);
     void clickedPushButton(const QPushButton*);
 
 private slots:
