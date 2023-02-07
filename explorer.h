@@ -9,6 +9,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsProxyWidget>
 
+#include <namefile.h>
 
 namespace Ui {
 class Explorer;
@@ -53,6 +54,7 @@ private slots:
     void clicked_File();
 
     void on_addFolder_clicked();
+    void acceptFileNameSlot(const NameFile*);
 
 signals:
     void escapeChange(const Explorer* exp, const bool);
@@ -75,6 +77,9 @@ private:
     int height;
 
     bool checkHide;
+    int count = 0;
+
+    QString fileName;
 };
 
 #endif // EXPLORER_H

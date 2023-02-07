@@ -61,7 +61,6 @@ QToolButton {
 	min-height:25px;
 	max-height:35px;
 	border-radius: 10px;
-	qproperty-alignment: AlignCenter;	
 	font: 20px;
 	font-weight:bold;
 }

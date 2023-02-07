@@ -11,15 +11,18 @@ CONFIG += c++17
 SOURCES += \
     explorer.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    namefile.cpp
 
 HEADERS += \
     explorer.h \
-    mainwindow.h
+    mainwindow.h \
+    namefile.h
 
 FORMS += \
     explorer.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    namefile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

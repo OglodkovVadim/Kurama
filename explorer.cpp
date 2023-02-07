@@ -30,13 +30,25 @@ Explorer::~Explorer()
     delete ui;
 }
 
+void Explorer::acceptFileNameSlot(const NameFile* nameFile)
+{
+    qDebug() << "accept explorer slot";
+    arrPb.back()->setText(nameFile->getText());
+    arrWidButt.back()->show();
+}
+
 void Explorer::on_toolButton_clicked()
 {
     ui->toolButton_2->setEnabled(true);
+    NameFile* nameFileWidget = new NameFile(this);
+    connect(nameFileWidget, SIGNAL(acceptFileName(const NameFile*)), this, SLOT(acceptFileNameSlot(const NameFile*)));
+    nameFileWidget->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    nameFileWidget->show();
 
 // adding new file
     arrWidButt.append(new QWidget());
-    arrPb.append(new QPushButton("File.txt"));
+    arrWidButt.back()->hide();
+    arrPb.append(new QPushButton(fileName));
     arrTbRemoveFile.append(new QToolButton());
     arrTbRemoveFile.back()->setStyleSheet("QToolButton { border:none; background-color:none; image: url(:/image/closeRed); max-width: 25px; max-height: 25px; }"
                                           " QToolButton:hover { image: url(:/image/closeRedHover); }"
@@ -121,7 +133,7 @@ void Explorer::remove_File()
         }
 
     ui->verticalLayout->addStretch();
-    ui->widget->setGeometry(QRect(x, y, width, ui->widget->height() - 60));
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(), ui->widget->height() - 60);
     this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() - 60);
 
     if (arrWidButt.size() == 0) {
@@ -158,15 +170,14 @@ int Explorer::getCountFiles() const
     return arrWidButt.size();
 }
 
-// 2) добавить кнопку добавлениня каталога в каталог
 
 void Explorer::on_addFolder_clicked()
 {
     arrLocalExplorer.append(new Explorer());
     ui->verticalLayout->insertWidget(0, arrLocalExplorer.back());
 
-    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width(), ui->widget->height() + 60);
-
+    ui->widget->setGeometry(ui->widget->x(), ui->widget->y(), ui->widget->width() + 60, ui->widget->height() + 60);
+    this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width() + 60, this->geometry().height());
     if (checkHide) {
         checkHide = false;
         emit escapeChange(this, checkHide);
@@ -175,8 +186,10 @@ void Explorer::on_addFolder_clicked()
                                         " QToolButton#toolButton_2:pressed {image: url(:/image/arrowDown.png);}");
     }
     else
-        this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width(), this->geometry().height() + 60);
+        this->setGeometry(this->geometry().x(), this->geometry().y(), this->geometry().width() + 60, this->geometry().height() + 60);
 
     emit addFile(this);
 }
 
+// подредактировать пересещение папок при удаление файла
+// связать добавление локальных папок с корневыми

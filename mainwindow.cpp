@@ -79,7 +79,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::removeFileSlot(const Explorer* exp)
 {
     while (findNextExplorer(exp) != nullptr) {
@@ -126,8 +125,10 @@ bool MainWindow::findSameText(const QPushButton* pb)
 void MainWindow::clickedPushButton(const QPushButton* pb)
 {
     ui->tabWidget->show();
-    if (findSameText(pb))
-        ui->tabWidget->addTab(new QWidget(), pb->text());
+    if (findSameText(pb)) {
+        ui->tabWidget->addTab(new QPlainTextEdit(), pb->text());
+
+    }
     else {
         QMessageBox messageBox;
         messageBox.critical(0,"Error","An error has occured !");
