@@ -20,7 +20,7 @@
    <string notr="true">QWidget {
 	background-color: rgb(46, 47, 48);
 	color: #eee;
-	border: none;
+	border: 1px solid #eee;
 }
 
 QLabel {
@@ -28,9 +28,10 @@ QLabel {
 	max-width:200px;
 	min-height:40px;
 	max-height:40px;
+	border: none;
 	border-radius: 10px;
 	qproperty-alignment: AlignCenter;	
-	font: 300 italic 20pt &quot;Calibri&quot;;
+	font: 20pt &quot;Calibri&quot;;
 }
 
 QLineEdit {
@@ -55,6 +56,7 @@ QPushButton {
 	qproperty-alignment: AlignCenter;	
 	font: 15px;
 	font-weight:bold;
+	
 }
 
 QPushButton:pressed {

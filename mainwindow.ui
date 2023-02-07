@@ -16,15 +16,15 @@
   <property name="styleSheet">
    <string notr="true">QWidget {
 	border:none;
-	background-color: rgb(46, 47, 48);
+	background-color: rgb(33, 34, 35);
 	color: #eee;
 }
 
 QToolButton {
 	border: 1px solid #eee;
-	min-width:35px;
+	min-width:18px;
 	max-width:35px;
-	min-height:35px;
+	min-height:18px;
 	max-height:35px;
 	border-radius: 10px;
 	qproperty-alignment: AlignCenter;	
@@ -46,7 +46,11 @@ QToolButton:pressed {
 
 QWidget#widget {
 	background-color: none;
-	border-left: 1px solid #eee;
+	border-left: 0.5px solid rgb(106, 106, 106);
+}
+
+QWidget#widget_2 {
+	border-left: 0.5px solid rgb(106, 106, 106);
 }
 
 </string>
@@ -257,7 +261,8 @@ QToolButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget#widget_2 {
-	border-left: 1px solid #eee;
+	/*border-left: 0.5px solid #eee;*/
+	background-color: rgb(46, 47, 48);
 }
 QWidget#widget_3 {
 	background-color: rgb(33, 34, 35);
@@ -409,6 +414,9 @@ QScrollBar:horizontal
        <height>600</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(33, 34, 35);</string>
+     </property>
     </widget>
     <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
@@ -453,7 +461,7 @@ QTabBar::tab::hover {
 
 QTabBar::tab::selected {
     color: rgb(46, 47, 48);
-	background-color: rgb(238, 238, 238);
+	background-color: #eee;
 }
 
 QTabWidget::pane &gt; QWidget {
@@ -461,7 +469,7 @@ QTabWidget::pane &gt; QWidget {
 }
 
 QTabWidget::pane {
-	background-color: rgb(46, 47, 48);
+	background-color:  rgb(46, 47, 48);
 }
 
 QTabBar::close-button {
@@ -509,10 +517,10 @@ QTabBar::close-button::hover {
    <widget class="QToolButton" name="toolButton_2">
     <property name="geometry">
      <rect>
-      <x>5</x>
+      <x>10</x>
       <y>10</y>
-      <width>35</width>
-      <height>35</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -522,6 +530,8 @@ QTabBar::close-button::hover {
 	image: url(:/image/profile);
 	max-width: 25px;
 	max-height: 25px;
+	min-width: 25px;
+	min-height: 25px;
 }
 
 QToolButton:hover {
@@ -539,10 +549,10 @@ QToolButton:pressed {
    <widget class="QToolButton" name="toolButton_3">
     <property name="geometry">
      <rect>
-      <x>5</x>
+      <x>11</x>
       <y>650</y>
-      <width>35</width>
-      <height>35</height>
+      <width>25</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">

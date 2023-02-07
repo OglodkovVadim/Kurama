@@ -2,6 +2,7 @@
 #define NAMEFILE_H
 
 #include <QDialog>
+#include <QPushButton>
 
 namespace Ui {
 class NameFile;

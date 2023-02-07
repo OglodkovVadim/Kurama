@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
-	background-color: rgb(46, 47, 48);
+	background-color: rgb(33, 34, 35);
 	color: #eee;
 	border: none;
 }
@@ -45,13 +45,15 @@ QPushButton {
 }
 
 QPushButton:pressed {
-	background-color: rgb(46, 47, 48);
+	border: 1px solid #eee;
 	color: #eee;
 }
 
 QPushButton:hover {
+	border: 1px solid rgb(91, 91, 91);
+	color: rgb(91, 91, 91);
+	
 	background-color: rgb(238, 238, 238);
-	color: rgb(46, 47, 48);
 }
 
 QToolButton {
@@ -112,8 +114,8 @@ QToolButton#toolButton_2:pressed {
     <rect>
      <x>160</x>
      <y>18</y>
-     <width>35</width>
-     <height>35</height>
+     <width>30</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -179,8 +181,8 @@ QToolButton:pressed {
     <rect>
      <x>193</x>
      <y>18</y>
-     <width>35</width>
-     <height>35</height>
+     <width>30</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="styleSheet">
