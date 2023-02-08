@@ -6,12 +6,12 @@ NameFile::NameFile(QWidget *parent) :
     ui(new Ui::NameFile)
 {
     ui->setupUi(this);
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet("QPushButton { background-color: #55ff7f; color: rgb(33, 34, 35); border: 1px solid rgb(33, 34, 35); }"
-                                                               "QPushButton:hover { background-color: #359f4e; }"
-                                                               "QPushButton:pressed { background-color: #55ff7f; }");
-    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet("QPushButton { background-color:#ff3d3d; color: rgb(33, 34, 35); border: 1px solid rgb(33, 34, 35); }"
-                                                                   "QPushButton:hover { background-color:#872020 }"
-                                                                   "QPushButton:pressed { background-color: #ff3d3d; }");
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet("QPushButton { background-color: none; color: #55ff7f; border: 1px solid #55ff7f; }"
+                                                               "QPushButton:hover { color: #359f4e; border: 1px solid #359f4e; }"
+                                                               "QPushButton:pressed { color: #55ff7f; border: 1px solid #55ff7f; }");
+    ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet("QPushButton { background-color: none; color: #ff3d3d; border: 1px solid #ff3d3d; }"
+                                                                   "QPushButton:hover { color: #872020; border: 1px solid #872020; }"
+                                                                   "QPushButton:pressed { color: #ff3d3d; border: 1px solid #ff3d3d; }");
 }
 
 NameFile::~NameFile()
