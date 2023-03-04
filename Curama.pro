@@ -10,17 +10,20 @@ CONFIG += c++17
 
 SOURCES += \
     explorer.cpp \
+    folder.cpp \
     main.cpp \
     mainwindow.cpp \
     namefile.cpp
 
 HEADERS += \
     explorer.h \
+    folder.h \
     mainwindow.h \
     namefile.h
 
 FORMS += \
     explorer.ui \
+    folder.ui \
     mainwindow.ui \
     namefile.ui
 

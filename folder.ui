@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Explorer</class>
- <widget class="QWidget" name="Explorer">
+ <class>Folder</class>
+ <widget class="QWidget" name="Folder">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -78,7 +78,7 @@ QToolButton:pressed {
 	color: #eee;
 }
 
-QToolButton#toolButton_2 {
+QToolButton#escape {
 	background-color:none;
 	min-width:15px;
 	max-width:15px;
@@ -88,11 +88,11 @@ QToolButton#toolButton_2 {
 	border:none;
 }	
 
-QToolButton#toolButton_2:hover {
+QToolButton#escape:hover {
 	image: url(:/image/arrowRightHover.png);
 } 
 
-QToolButton#toolButton_2:pressed {
+QToolButton#escape:pressed {
 	image: url(:/image/arrowRight.png);
 }</string>
   </property>
@@ -109,7 +109,7 @@ QToolButton#toolButton_2:pressed {
     <string>Folder</string>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton">
+  <widget class="QToolButton" name="addFile">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -139,7 +139,7 @@ QToolButton:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_2">
+  <widget class="QToolButton" name="escape">
    <property name="geometry">
     <rect>
      <x>25</x>
@@ -206,9 +206,9 @@ QToolButton:pressed {
     <string/>
    </property>
   </widget>
-  <zorder>toolButton</zorder>
+  <zorder>addFile</zorder>
   <zorder>label</zorder>
-  <zorder>toolButton_2</zorder>
+  <zorder>escape</zorder>
   <zorder>widget</zorder>
   <zorder>addFolder</zorder>
  </widget>

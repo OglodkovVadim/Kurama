@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	border:none;
+	background-color: rgb(33, 34, 35);
+	color: #eee;
+}
+
+QToolButton {
+	border: 1px solid #eee;
+	min-width:18px;
+	max-width:35px;
+	min-height:18px;
+	max-height:35px;
+	border-radius: 10px;
+	qproperty-alignment: AlignCenter;	
+	font: 20px;
+	font-weight:bold;
+	color:#eee;
+}
+
+QToolButton:hover {
+	background-color: rgb(238, 238, 238);
+	color: rgb(46, 47, 48);
+}
+
+
+QToolButton:pressed {
+	background-color: rgb(46, 47, 48);
+	color: #eee;
+}
+
+QWidget#widget {
+	background-color: none;
+	border-left: 0.5px solid rgb(106, 106, 106);
+}
+
+QWidget#widget_2 {
+	border-left: 0.5px solid rgb(106, 106, 106);
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>0</y>
+      <width>380</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>350</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QScrollBar:horizontal
+    {
+        height: 15px;
+        margin: 3px 15px 3px 15px;
+        border: 1px transparent #2A2929;
+        border-radius: 4px;
+	    background-color: #2A2929;
+    }
+
+    QScrollBar::handle:horizontal
+    {
+        background-color: #eee;
+        min-width: 5px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::add-line:horizontal
+    {
+        margin: 0px 3px 0px 3px;
+        border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+        width: 10px;
+        height: 10px;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:horizontal
+    {
+        margin: 0px 3px 0px 3px;
+        border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+    {
+        border-image: url(:/qss_icons/rc/right_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+
+    QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+    {
+        border-image: url(:/qss_icons/rc/left_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+    {
+        background: none;
+    }
+
+
+    QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+    {
+        background: none;
+    }
+
+    QScrollBar:vertical
+    {
+        background-color: #2A2929;
+        width: 15px;
+        margin: 15px 3px 15px 3px;
+        border: 1px transparent #2A2929;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:vertical
+    {
+        background-color: #eee;         /* #605F5F; */
+        min-height: 5px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::sub-line:vertical
+    {
+        margin: 3px 0px 3px 0px;
+        border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:vertical
+    {
+        margin: 3px 0px 3px 0px;
+        border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+    {
+        border-image: url(:/qss_icons/rc/up_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+    {
+        border-image: url(:/qss_icons/rc/down_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+    {
+        background: none;
+    }
+
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+    {
+        background: none;
+    }</string>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>350</width>
+        <height>600</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QToolButton" name="toolButton">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>10</y>
+       <width>35</width>
+       <height>35</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/addFolder);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/addFolderHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/addFolder);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>45</x>
+      <y>0</y>
+      <width>855</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget_2 {
+	/*border-left: 0.5px solid #eee;*/
+	background-color: rgb(46, 47, 48);
+}
+QWidget#widget_3 {
+	background-color: rgb(33, 34, 35);
+	border-radius:15px;
+}
+
+QPlainTextEdit {
+	font: 20px bold;
+	color: #eee;
+	padding: 5px;
+}
+
+QScrollBar:horizontal
+    {
+        height: 15px;
+        margin: 3px 15px 3px 15px;
+        border: 1px transparent #2A2929;
+        border-radius: 4px;
+	    background-color: #2A2929;
+    }
+
+    QScrollBar::handle:horizontal
+    {
+        background-color: #eee;
+        min-width: 5px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::add-line:horizontal
+    {
+        margin: 0px 3px 0px 3px;
+        border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+        width: 10px;
+        height: 10px;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:horizontal
+    {
+        margin: 0px 3px 0px 3px;
+        border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+    {
+        border-image: url(:/qss_icons/rc/right_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: right;
+        subcontrol-origin: margin;
+    }
+
+
+    QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+    {
+        border-image: url(:/qss_icons/rc/left_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: left;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+    {
+        background: none;
+    }
+
+
+    QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+    {
+        background: none;
+    }
+
+    QScrollBar:vertical
+    {
+        background-color: #2A2929;
+        width: 15px;
+        margin: 15px 3px 15px 3px;
+        border: 1px transparent #2A2929;
+        border-radius: 4px;
+    }
+
+    QScrollBar::handle:vertical
+    {
+        background-color: #eee;         /* #605F5F; */
+        min-height: 5px;
+        border-radius: 4px;
+    }
+
+    QScrollBar::sub-line:vertical
+    {
+        margin: 3px 0px 3px 0px;
+        border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:vertical
+    {
+        margin: 3px 0px 3px 0px;
+        border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+    {
+        border-image: url(:/qss_icons/rc/up_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+    {
+        border-image: url(:/qss_icons/rc/down_arrow.png);
+        height: 10px;
+        width: 10px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+    {
+        background: none;
+    }
+
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+    {
+        background: none;
+    }</string>
+    </property>
+    <widget class="QWidget" name="widget_3" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>75</y>
+       <width>781</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(33, 34, 35);</string>
+     </property>
+    </widget>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>750</width>
+       <height>620</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTabBar::tab {
+    min-width:100px; 
+    min-height:40px;
+	border-radius: 7px;
+	background-color: rgb(46, 47, 48);
+	color: #eee;
+	margin-left: 5px;
+	border: 1px solid #eee;
+	margin-bottom:5px;
+	font: 14px;
+	font-weight: bold;
+	padding-left: 2px;
+}
+
+QWidget {
+	background-color: rgb(33, 34, 35);
+	border:none;
+}
+
+QTabBar {
+	margin-bottom:5px;
+}
+
+QTabBar::tab::hover {
+    color: rgb(46, 47, 48);
+	background-color: rgb(238, 238, 238);
+}
+
+QTabBar::tab::selected {
+    color: rgb(46, 47, 48);
+	background-color: #eee;
+}
+
+QTabWidget::pane &gt; QWidget {
+	background-color: rgb(46, 47, 48);
+}
+
+QTabWidget::pane {
+	background-color:  rgb(46, 47, 48);
+}
+
+QTabBar::close-button {
+	image: url(:/image/closeRed);
+}
+
+QTabBar::close-button::hover {
+	image: url(:/image/closeRedHover);
+}</string>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
+     <property name="elideMode">
+      <enum>Qt::ElideNone</enum>
+     </property>
+     <property name="documentMode">
+      <bool>false</bool>
+     </property>
+     <property name="tabsClosable">
+      <bool>true</bool>
+     </property>
+     <property name="movable">
+      <bool>true</bool>
+     </property>
+     <property name="tabBarAutoHide">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QToolButton" name="toolButton_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/profile);
+	max-width: 25px;
+	max-height: 25px;
+	min-width: 25px;
+	min-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/profileHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/profile);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButton_3">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>650</y>
+      <width>25</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/settings);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/settingsHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/settings);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

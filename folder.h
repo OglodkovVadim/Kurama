@@ -1,5 +1,5 @@
-#ifndef EXPLORER_H
-#define EXPLORER_H
+#ifndef FOLDER_H
+#define FOLDER_H
 
 #include <QWidget>
 #include <QPushButton>
@@ -12,16 +12,16 @@
 #include <namefile.h>
 
 namespace Ui {
-class Explorer;
+class Folder;
 }
 
-class Explorer : public QWidget
+class Folder : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Explorer(QWidget *parent = nullptr);
-    ~Explorer();
+    explicit Folder(QWidget *parent = nullptr);
+    ~Folder();
 
     static void animationWidget(QWidget&, double, double, double, double, QEasingCurve::Type, int);
 
@@ -48,26 +48,26 @@ public:
     int getCountFiles() const;
 
 private slots:
-    void on_toolButton_clicked();
+    void on_addFile_clicked();
     void remove_File();
-    void on_toolButton_2_clicked();
+    void on_escape_clicked();
     void clicked_File();
 
     void on_addFolder_clicked();
     void acceptFileNameSlot(const NameFile*);
 
 signals:
-    void escapeChange(const Explorer* exp, const bool);
-    void addFile(const Explorer*);
-    void removeFile(const Explorer*);
+    void escapeChange(const Folder* exp, const bool);
+    void addFile(const Folder*);
+    void removeFile(const Folder*);
     void clickedFile(const QPushButton*);
 
 private:
-    Ui::Explorer *ui;
+    Ui::Folder *ui;
 
     QVector<QPushButton*> arrPb;
     QVector<QToolButton*> arrTbRemoveFile;
-    QVector<Explorer*> arrLocalExplorer;
+    QVector<Folder*> arrLocalExplorer;
     QVector<QWidget*> arrWidButt;
     QVector<QHBoxLayout*> arrLayout;
 
@@ -82,4 +82,4 @@ private:
     QString fileName;
 };
 
-#endif // EXPLORER_H
+#endif // FOLDER_H
