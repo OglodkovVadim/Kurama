@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->scrollArea->setWidgetResizable(false);
-    ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), 0);
+//    ui->scrollArea->setWidgetResizable(false);
+//    ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(), ui->scrollAreaWidgetContents->width(), 0);
     ui->tabWidget->hide();
     ui->tabWidget->removeTab(0);
     explorer = new Explorer(ui->widget);

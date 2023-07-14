@@ -141,6 +141,7 @@ void Folder::remove_File()
 
 void Folder::on_escape_clicked()
 {
+    qDebug() << "clicked";
     if (checkHide) {
         ui->escape->setStyleSheet("QToolButton#escape {image: url(:/image/arrowDown.png);} "
                                   "QToolButton#escape:hover {image: url(:/image/arrowDownHover.png);} "

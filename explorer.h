@@ -43,6 +43,7 @@ public slots:
 
 private slots:
     void on_toolButton_clicked();
+//    void on_accept_clicked();
 //    void on_tabWidget_tabCloseRequested(int index);
 
 };

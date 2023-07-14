@@ -14,5 +14,6 @@
         <file>profileHover</file>
         <file>settings</file>
         <file>settingsHover</file>
+        <file>appIcon</file>
     </qresource>
 </RCC>

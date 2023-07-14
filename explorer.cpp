@@ -42,6 +42,11 @@ Folder* Explorer::findPreviousFolder(const Folder* exp)
 
 void Explorer::addFileSlot(const Folder* folder)
 {
+    qDebug() << "folder.parent() = " << folder->parent();
+    if (folder->parent()) {
+//        qobject_cast<Folder*>(folder->parent())->changeHeightWidget();
+//        buf->setGeometry(buf->x(), buf->y(), buf->width(), buf->height() + 60);
+    }
     ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(),
                                               ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() + 60);
     while (findNextFolder(folder) != nullptr) {
@@ -53,6 +58,7 @@ void Explorer::addFileSlot(const Folder* folder)
 
 void Explorer::getSignal(const Folder* folder, const bool checkHide)
 {
+
     if (checkHide) {
         ui->scrollAreaWidgetContents->setGeometry(ui->scrollAreaWidgetContents->x(), ui->scrollAreaWidgetContents->y(),
                                                   ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height() - folder->getWidget()->height());
@@ -107,6 +113,7 @@ void Explorer::on_toolButton_clicked()
     connect(arrFolder.back(), SIGNAL(addFile(const Folder*)), this, SLOT(addFileSlot(const Folder*)));
     connect(arrFolder.back(), SIGNAL(removeFile(const Folder*)), this, SLOT(removeFileSlot(const Folder*)));
     connect(arrFolder.back(), SIGNAL(clickedFile(const QPushButton*)), this, SLOT(clickedPushButton(const QPushButton*)));
+
 }
 
 //bool Explorer::findSameText(const QPushButton* pb)
@@ -125,10 +132,12 @@ void Explorer::clickedPushButton(const QPushButton* pb)
 //        ui->tabWidget->addTab(new QPlainTextEdit(), pb->text());
 
 //    }
+//    emit
+
 //    else {
-        QMessageBox messageBox;
-        messageBox.critical(0,"Error","An error has occured !");
-        messageBox.setFixedSize(500,200);
+//        QMessageBox messageBox;
+//        messageBox.critical(0,"Error","An error has occured !");
+//        messageBox.setFixedSize(500,200);
 //    }
 
 }

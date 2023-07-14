@@ -20,30 +20,6 @@
 	color: #eee;
 }
 
-QToolButton {
-	border: 1px solid #eee;
-	min-width:18px;
-	max-width:35px;
-	min-height:18px;
-	max-height:35px;
-	border-radius: 10px;
-	qproperty-alignment: AlignCenter;	
-	font: 20px;
-	font-weight:bold;
-	color:#eee;
-}
-
-QToolButton:hover {
-	background-color: rgb(238, 238, 238);
-	color: rgb(46, 47, 48);
-}
-
-
-QToolButton:pressed {
-	background-color: rgb(46, 47, 48);
-	color: #eee;
-}
-
 QWidget#widget {
 	background-color: none;
 	border-left: 0.5px solid rgb(106, 106, 106);
@@ -386,36 +362,6 @@ QToolButton:hover {
 
 QToolButton:pressed {
 	image: url(:/image/settings);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="toolButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>330</y>
-      <width>25</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QToolButton {
-	border:none;
-	background-color:none;
-	image: url(:/image/addFolder);
-	max-width: 25px;
-	max-height: 25px;
-}
-
-QToolButton:hover {
-	image: url(:/image/addFolderHover);
-}
-
-QToolButton:pressed {
-	image: url(:/image/addFolder);
 }</string>
     </property>
     <property name="text">
