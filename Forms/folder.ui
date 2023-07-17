@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Folder</class>
+ <widget class="QWidget" name="Folder">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>300</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rgb(33, 34, 35);
+	color: #eee;
+	border: none;
+}
+
+QLabel {
+	border: 1px solid #eee;
+	min-width:100px;
+	max-width:100px;
+	min-height:40px;
+	max-height:40px;
+	border-radius: 10px;
+	qproperty-alignment: AlignCenter;	
+	font: 15px;
+	font-weight:bold;
+}
+
+QPushButton {
+	border: 1px solid #eee;
+	min-width:100px;
+	max-width:100px;
+	min-height:35px;
+	max-height:40px;
+	border-radius: 10px;
+	qproperty-alignment: AlignCenter;	
+	font: 15px;
+	font-weight:bold;
+}
+
+QPushButton:pressed {
+	border: 1px solid #eee;
+	background-color: rgb(33, 34, 35);
+	color: #eee;
+}
+
+QPushButton:hover {
+	border: 1px solid rgb(33, 34, 35);
+	color: rgb(33, 34, 35);
+	background-color: rgb(238, 238, 238);
+}
+
+QToolButton {
+	border: 1px solid #eee;
+	min-width:30px;
+	max-width:35px;
+	min-height:25px;
+	max-height:35px;
+	border-radius: 10px;
+	font: 20px;
+	font-weight:bold;
+}
+
+QToolButton:hover {
+	background-color: rgb(238, 238, 238);
+	color: rgb(46, 47, 48);
+}
+
+
+QToolButton:pressed {
+	background-color: rgb(46, 47, 48);
+	color: #eee;
+}
+
+QToolButton#escape {
+	background-color:none;
+	min-width:15px;
+	max-width:15px;
+	min-height:15px;
+	max-height:15px;
+	image: url(:/image/Images/arrowRight.png);
+	border:none;
+}	
+
+QToolButton#escape:hover {
+	image: url(:/image/Images/arrowRightHover.png)
+} 
+
+QToolButton#escape:pressed {
+	image: url(:/image/Images/arrowRight.png);
+}</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>10</y>
+     <width>102</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Folder</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="addFile">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>18</y>
+     <width>30</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/Images/addFile);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/Images/addFileHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/Images/addFile);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="escape">
+   <property name="geometry">
+    <rect>
+     <x>25</x>
+     <y>25</y>
+     <width>15</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>191</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+  </widget>
+  <widget class="QToolButton" name="addFolder">
+   <property name="geometry">
+    <rect>
+     <x>193</x>
+     <y>18</y>
+     <width>30</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton {
+	border:none;
+	background-color:none;
+	image: url(:/image/Images/addFolder);
+	max-width: 25px;
+	max-height: 25px;
+}
+
+QToolButton:hover {
+	image: url(:/image/Images/addFolderHover);
+}
+
+QToolButton:pressed {
+	image: url(:/image/Images/addFolder);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>addFile</zorder>
+  <zorder>label</zorder>
+  <zorder>escape</zorder>
+  <zorder>widget</zorder>
+  <zorder>addFolder</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

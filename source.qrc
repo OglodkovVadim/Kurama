@@ -1,19 +1,19 @@
 <RCC>
     <qresource prefix="/image">
-        <file>arrowDown.png</file>
-        <file>arrowRight.png</file>
-        <file>arrowRightHover.png</file>
-        <file>arrowDownHover.png</file>
-        <file>closeRedHover</file>
-        <file>closeRed</file>
-        <file>addFile</file>
-        <file>addFileHover</file>
-        <file>addFolder</file>
-        <file>addFolderHover</file>
-        <file>profile</file>
-        <file>profileHover</file>
-        <file>settings</file>
-        <file>settingsHover</file>
-        <file>appIcon</file>
+        <file>Images/arrowDown.png</file>
+        <file>Images/arrowRight.png</file>
+        <file>Images/arrowRightHover.png</file>
+        <file>Images/arrowDownHover.png</file>
+        <file>Images/closeRedHover</file>
+        <file>Images/closeRed</file>
+        <file>Images/addFile</file>
+        <file>Images/addFileHover</file>
+        <file>Images/addFolder</file>
+        <file>Images/addFolderHover</file>
+        <file>Images/profile</file>
+        <file>Images/profileHover</file>
+        <file>Images/settings</file>
+        <file>Images/settingsHover</file>
+        <file>Images/appIcon</file>
     </qresource>
 </RCC>

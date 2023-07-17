@@ -11,23 +11,23 @@ win32:RC_ICONS += appIcon.ico
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    explorer.cpp \
-    folder.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    namefile.cpp
+    Sources/explorer.cpp \
+    Sources/folder.cpp \
+    Sources/main.cpp \
+    Sources/mainwindow.cpp \
+    Sources/namefile.cpp
 
 HEADERS += \
-    explorer.h \
-    folder.h \
-    mainwindow.h \
-    namefile.h
+    /Headers/explorer.h \
+    /Headers/folder.h \
+    /Headers/mainwindow.h \
+    /Headers/namefile.h
 
 FORMS += \
-    explorer.ui \
-    folder.ui \
-    mainwindow.ui \
-    namefile.ui
+    Forms/explorer.ui \
+    Forms/folder.ui \
+    Forms/mainwindow.ui \
+    Forms/namefile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
